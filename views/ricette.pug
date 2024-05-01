@@ -1,0 +1,29 @@
+doctype html
+head
+  link(href='/assets/dist/css/bootstrap.min.css' rel='stylesheet')
+.container
+  .row
+    .col-12.col-md-8
+      .receipe-headline.my-5
+        span= ricetta.data_aggiunta
+        h2= ricetta.titolo
+        .receipe-duration
+          h6 Prep: #{ricetta.tempo_preparazione} mins
+          h6 Porzioni: #{ricetta.porzioni}
+    .col-12.col-md-4
+      .receipe-ratings.text-right.my-5
+        span Difficoltà: #{ricetta.livello}
+  .row
+    .col-12.col-lg-8
+        p=ricetta.testo
+    .col-12.col-lg-4
+      .ingredients
+        h4 Ingredienti
+        table.table
+            each ingrediente in ricetta.ingredienti
+                tr.custom-control.custom-checkbox
+                    td
+                        input.custom-control-input(type='checkbox' id="customCheck"+ ingrediente.id)
+                    td
+                        label.custom-control-label(for="customCheck"+ ingrediente.id)=ingrediente.nome
+
